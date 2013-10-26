@@ -1,11 +1,11 @@
 # get variables
 SITENAME=$1
-DBUSER=''
-DBPW=''
-WPUSER=''
-WPPW=''
-WPEMAIL=''
-GENESISLOCATION=''
+DB_USER=''
+DB_PW=''
+WP_USER=''
+WP_PW=''
+WP_EMAIL=''
+WP_GENESIS_LOCATION=''
 
 # create and enter folder
 cd ~/Sites
@@ -13,11 +13,11 @@ mkdir $SITENAME
 cd $SITENAME
 
 # create DB
-mysql -h localhost -u $DBUSER -p$DBPW -Bse "CREATE DATABASE $SITENAME; "
+mysql -h localhost -u $DB_USER -p$DB_PW -Bse "CREATE DATABASE $SITENAME; "
 
 # download and install WP
 wp core download
-wp core config --dbname=$SITENAME --dbuser=$DBUSER --dbpass=$DBPW --extra-php <<PHP
+wp core config --dbname=$SITENAME --DB_USER=$DB_USER --dbpass=$DB_PW --extra-php <<PHP
 define( 'WP_DEBUG', true );
 
 /**
@@ -46,7 +46,7 @@ define('EMPTY_TRASH_DAYS', 15 );
  */
 define('DISALLOW_FILE_EDIT', true);
 PHP
-wp core install --url=http://$SITENAME.dev --title=$SITENAME --admin_user=$WPUSER --admin_password=$WPPW --admin_email=$WPEMAIL
+wp core install --url=http://$SITENAME.dev --title=$SITENAME --admin_user=$WP_USER --admin_password=$WP_PW --admin_email=$WP_EMAIL
 
 # install plugins
 wp plugin uninstall akismet
@@ -66,7 +66,7 @@ wp plugin activate wordpress-importer
 
 # cleanup themes
 wp theme delete twentytwelve
-wp theme install $GENESISLOCATION
+wp theme install $WP_GENESIS_LOCATION
 
 # add test XML
 wp site empty --yes
