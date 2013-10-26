@@ -4,7 +4,9 @@ WP-Install Script
 Create and furnish a local WP install with one command!
 
 **Step 1**: Setup your variables at the top of the script.
+
 **Step 2**: Open Terminal.
+
 **Step 3**: Type `bash {your script location} {your site slug}`.
 
 What this script does (in a nutshell):
