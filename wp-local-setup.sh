@@ -55,6 +55,7 @@ wp plugin install advanced-custom-fields
 wp plugin install login-security-solution
 wp plugin install regenerate-thumbnails
 wp plugin install theme-check
+wp plugin install developer
 wp plugin install underconstruction
 wp plugin install velvet-blues-update-urls
 wp plugin install wordpress-seo
