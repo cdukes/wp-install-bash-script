@@ -1,11 +1,6 @@
 # get variables
 SITENAME=$1
-DB_USER=''
-DB_PW=''
-WP_USER=''
-WP_PW=''
-WP_EMAIL=''
-WP_GENESIS_LOCATION=''
+. "$(dirname "$0")"/wp-setup-config.sh
 
 # create and enter folder
 cd ~/Sites
@@ -34,7 +29,7 @@ define('WP_POST_REVISIONS', 3);
 /**
  * Increase PHP memory limit
  */
-define('WP_MEMORY_LIMIT', '64M');
+define('WP_MEMORY_LIMIT', '96M');
 
 /**
  * Empty trash more frequently
@@ -52,7 +47,6 @@ wp core install --url=http://$SITENAME.dev --title=$SITENAME --admin_user=$WP_US
 wp plugin uninstall akismet
 wp plugin uninstall hello
 wp plugin install advanced-custom-fields
-wp plugin install login-security-solution
 wp plugin install regenerate-thumbnails
 wp plugin install theme-check
 wp plugin install developer
@@ -63,24 +57,21 @@ wp plugin install wordpress-seo
 wp plugin install wp-crontrol
 wp plugin install wp-smushit
 wp plugin install wordpress-importer
-wp plugin activate advanced-custom-fields
-wp plugin activate query-monitor
-wp plugin activate regenerate-thumbnails
-wp plugin activate wordpress-importer
 
 # cleanup themes
 wp theme delete twentytwelve
-wp theme install $WP_GENESIS_LOCATION
+# wp theme install $WP_GENESIS_LOCATION
 
 # add test XML
 wp site empty --yes
-curl -O https://raw.github.com/manovotny/wptest/master/wptest.xml
-wp import wptest.xml --authors=create
-rm wptest.xml
+# curl -O https://raw.github.com/manovotny/wptest/master/wptest.xml
+# wp import wptest.xml --authors=create
+# rm wptest.xml
 
 # clean db
 wp db repair
 wp db optimize
+wp cache flush
 
 # flush permalinks
 wp rewrite structure '/%postname%/' --hard
