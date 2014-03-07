@@ -14,6 +14,9 @@ find ~/Documents -type d -name '.git' -exec sh -c 'cd "{}" && cd .. && git submo
 # Update all Bower dependencies
 find ~/Documents -type d -name 'bower_components' -exec sh -c 'cd "{}" && cd .. && bower update --save' \;
 
+# Update NPM
+find ~/Documents -type d -name 'node_modules' -exec sh -c 'cd "{}" && cd .. && npm update --save-dev' \;
+
 # Flush all WP caches
 find ~/Sites -type d -maxdepth 1 -exec wp cache flush --path={} \;
 
