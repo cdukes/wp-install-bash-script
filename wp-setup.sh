@@ -59,6 +59,7 @@ wp plugin install wp-smushit
 wp plugin install wordpress-importer
 
 # cleanup themes
+wp theme delete twentythirteen
 wp theme delete twentytwelve
 # wp theme install $WP_GENESIS_LOCATION
 
