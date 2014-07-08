@@ -94,7 +94,7 @@ wp rewrite structure '/%postname%/' --hard
 wp option update blogdescription ''
 wp option update blog_public '0'
 wp option update default_comment_status 'closed'
-wp option update timezone_string 'America/New_York'
+wp option update timezone_string "$WP_TIMEZONE"
 
 # bones theme
 cd wp-content/themes

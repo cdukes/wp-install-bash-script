@@ -8,6 +8,11 @@ WP_USER=''
 WP_PW=''
 
 # initial admin user's email, and site admin email
-WP_EMAIL=''# asset locations
+WP_EMAIL=''
+
+# timezone
+WP_TIMEONE=''
+
+# asset locations
 WP_GENESIS_LOCATION=''
 WP_ACF_LOCATION=''
