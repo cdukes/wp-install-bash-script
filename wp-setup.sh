@@ -1,3 +1,6 @@
+set -o nounset
+set -o errexit
+
 # get variables
 SITENAME=$1
 . "$(dirname "$0")"/wp-setup-config.sh
