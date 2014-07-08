@@ -30,6 +30,11 @@ define('WP_HOME', 'http://$SITENAME.dev');
 define('WP_POST_REVISIONS', 3);
 
 /**
+ * Skip /wp-content/ when upgrading
+ */
+define('CORE_UPGRADE_SKIP_NEW_BUNDLED', true );
+
+/**
  * Increase PHP memory limit
  */
 define('WP_MEMORY_LIMIT', '96M');
@@ -38,6 +43,11 @@ define('WP_MEMORY_LIMIT', '96M');
  * Empty trash more frequently
  */
 define('EMPTY_TRASH_DAYS', 15 );
+
+/**
+ * Enable trash for media items
+ */
+define('MEDIA_TRASH', true);
 
 /**
  * Prevent theme/plugin file editing
