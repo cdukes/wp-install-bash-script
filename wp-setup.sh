@@ -59,22 +59,22 @@ wp core install --url=http://$SITENAME.dev --title=$SITENAME --admin_user=$WP_US
 # install plugins
 wp plugin uninstall akismet
 wp plugin uninstall hello
-wp plugin install advanced-custom-fields
+wp plugin install "$WP_ACF_LOCATION"
 wp plugin install regenerate-thumbnails
-wp plugin install theme-check
-wp plugin install developer
+# wp plugin install theme-check
+# wp plugin install developer
 wp plugin install underconstruction
 wp plugin install query-monitor
 wp plugin install velvet-blues-update-urls
 wp plugin install wordpress-seo
-wp plugin install wp-crontrol
+# wp plugin install wp-crontrol
 wp plugin install wp-smushit
 wp plugin install wordpress-importer
 
 # cleanup themes
 wp theme delete twentythirteen
 wp theme delete twentytwelve
-# wp theme install $WP_GENESIS_LOCATION
+wp theme install "$WP_GENESIS_LOCATION"
 
 # add test XML
 wp site empty --yes
