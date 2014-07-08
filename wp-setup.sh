@@ -99,3 +99,7 @@ wp option update timezone_string "$WP_TIMEZONE"
 # bones theme
 cd wp-content/themes
 git clone https://github.com/cdukes/bones-for-genesis-2-0.git genesis-$SITENAME
+cd genesis-$SITENAME
+npm update --save-dev
+bower update --save
+wp theme activate genesis-$SITENAME
