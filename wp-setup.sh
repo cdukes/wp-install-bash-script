@@ -63,7 +63,7 @@ define( 'DISALLOW_FILE_MODS', true );
 /**
  * Set default theme
  */
-define( 'WP_DEFAULT_THEME', 'twentytwelve' );
+define( 'WP_DEFAULT_THEME', 'twentyfifteen' );
 
 /**
  * Set post autosave interval
@@ -91,13 +91,14 @@ wp plugin install login-security-solution
 wp theme delete twentyfifteen
 wp theme delete twentyfourteen
 wp theme delete twentythirteen
-wp theme install "$WP_GENESIS_LOCATION"
+
+# empty site content
+wp site empty --yes
 
 # add test XML
 while [[ $# -gt 0 ]]; do
 	case "$1" in
 	--install-test-content|-T)
-		wp site empty --yes
 		curl -O https://raw.github.com/manovotny/wptest/master/wptest.xml
 		wp import wptest.xml --authors=create
 		rm wptest.xml
@@ -134,6 +135,7 @@ while [[ $# -gt 0 ]]; do
 		cd genesis-$SITENAME
 		npm update --save-dev
 		bower update --save
+		wp theme install "$WP_GENESIS_LOCATION"
 		wp theme activate genesis-$SITENAME
 		shift
 		;;
