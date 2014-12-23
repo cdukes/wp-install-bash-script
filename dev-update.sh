@@ -27,4 +27,6 @@ find ~/Sites -type d -maxdepth 1 -exec wp cache flush --path={} \;
 find ~/Sites -type d -maxdepth 1 -exec wp rewrite flush --path={} \;
 
 # Regenerate all thumbnails
-# find ~/Sites -type d -maxdepth 1 -exec wp media regenerate --yes --path={} \;
+# find ~/Sites -type d -maxdepth 1 -exec wp media regenerate --yes --path={} \;# Cleanup DB
+wp db repair
+wp db optimize
