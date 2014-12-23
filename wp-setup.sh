@@ -109,9 +109,21 @@ wp option update default_comment_status 'closed'
 wp option update timezone_string "$WP_TIMEZONE"
 
 # bones theme
-cd wp-content/themes
-git clone https://github.com/cdukes/bones-for-genesis-2-0.git genesis-$SITENAME
-cd genesis-$SITENAME
-npm update --save-dev
-bower update --save
-wp theme activate genesis-$SITENAME
+while [[ $# -gt 0 ]]; do
+	case "$1" in
+	--install-bones|-B)
+		cd wp-content/themes
+		git clone https://github.com/cdukes/bones-for-genesis-2-0.git genesis-$SITENAME
+		cd genesis-$SITENAME
+		npm update --save-dev
+		bower update --save
+		wp theme activate genesis-$SITENAME
+		shift
+		;;
+	*)
+		echo "Invalid option: $1"
+		# exit 1
+		;;
+	esac
+	shift
+done
