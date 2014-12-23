@@ -77,10 +77,22 @@ wp theme delete twentytwelve
 wp theme install "$WP_GENESIS_LOCATION"
 
 # add test XML
-wp site empty --yes
-# curl -O https://raw.github.com/manovotny/wptest/master/wptest.xml
-# wp import wptest.xml --authors=create
-# rm wptest.xml
+while [[ $# -gt 0 ]]; do
+	case "$1" in
+	--install-test-content|-T)
+		wp site empty --yes
+		curl -O https://raw.github.com/manovotny/wptest/master/wptest.xml
+		wp import wptest.xml --authors=create
+		rm wptest.xml
+		shift
+		;;
+	*)
+		echo "Invalid option: $1"
+		# exit 1
+		;;
+	esac
+	shift
+done
 
 # clean db
 wp db repair
