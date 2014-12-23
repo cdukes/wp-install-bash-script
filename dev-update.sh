@@ -26,7 +26,32 @@ find ~/Sites -type d -maxdepth 1 -exec wp cache flush --path={} \;
 # Flush all WP rewrites
 find ~/Sites -type d -maxdepth 1 -exec wp rewrite flush --path={} \;
 
-# Regenerate all thumbnails
-# find ~/Sites -type d -maxdepth 1 -exec wp media regenerate --yes --path={} \;# Cleanup DB
+# Cleanup DB
 wp db repair
 wp db optimize
+
+# Optional
+while [[ $# -gt 0 ]]; do
+	case "$1" in
+	--regenerate-thumbnails|-R)
+		# Regenerate all thumbnails
+		find ~/Sites -type d -maxdepth 1 -exec wp media regenerate --yes --path={} \;
+		shift
+		;;
+	--clear-all-transients|-Ta)
+		# Clear WP transients
+		find ~/Sites -type d -maxdepth 1 -exec wp transient delete-all --path={} \;
+		shift
+		;;
+	--clear-expirated-transients|-Te)
+		# Clear expired WP transients
+		find ~/Sites -type d -maxdepth 1 -exec wp transient delete-expired --path={} \;
+		shift
+		;;
+	*)
+		echo "Invalid option: $1"
+		# exit 1  ## Could be optional.
+		;;
+	esac
+	shift
+done
