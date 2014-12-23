@@ -17,6 +17,9 @@ find ~/Documents -type d -name 'bower_components' -exec sh -c 'cd "{}" && cd .. 
 # Update NPM
 find ~/Documents -type d -name 'node_modules' -exec sh -c 'cd "{}" && cd .. && npm update --save-dev' \;
 
+# Delete spam comments
+wp comment delete $(wp comment list --status=spam --field=ID)
+
 # Flush all WP caches
 find ~/Sites -type d -maxdepth 1 -exec wp cache flush --path={} \;
 
