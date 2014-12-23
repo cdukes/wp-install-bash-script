@@ -1,3 +1,6 @@
+set -o nounset
+set -o errexit
+
 while read -r dir; do
 
 	if [ ! -f $dir/wp-config.php ]; then
@@ -124,6 +127,9 @@ find ~/Documents -type d -name '.git' -exec sh -c 'cd "{}" && cd .. && git submo
 
 # Update all Bower dependencies
 find ~/Documents -type d -name 'bower_components' -exec sh -c 'cd "{}" && cd .. && bower update --save' \;
+
+# Update all Composer dependencies
+find ~/Documents -type d -name 'vendor' -exec sh -c 'cd "{}" && cd .. && composer update' \;
 
 # Update NPM
 find ~/Documents -type d -name 'node_modules' -exec sh -c 'cd "{}" && cd .. && npm update --save-dev' \;
