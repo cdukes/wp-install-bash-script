@@ -1,12 +1,123 @@
-# Update all WP cores
-find ~/Sites -type d -maxdepth 1 -exec wp core update --path={} \;
-find ~/Sites -type d -maxdepth 1 -exec wp core update-db --path={} \;
+while read -r dir; do
 
-# Update all plugins
-find ~/Sites -type d -maxdepth 1 -exec wp plugin update-all --path={} \;
+	if [ ! -f $dir/wp-config.php ]; then
+		continue
+	fi
 
-# Update all themes
-find ~/Sites -type d -maxdepth 1 -exec wp theme update-all --path={} \;
+	echo "Site found: $dir"
+
+	# Maybe update all WP cores
+	wp core update --path=$dir
+	wp core update-db --path=$dir
+
+	# Update all plugins
+	wp plugin update-all --path=$dir
+
+	# Update all themes
+	wp theme update-all --path=$dir
+
+	# Delete spam comments
+	wp comment delete --path=$dir $(wp comment list --status=spam --field=ID --path=$dir)
+
+	# Flush all WP caches
+	wp cache flush --path=$dir
+
+	# Flush all WP rewrites
+	wp rewrite flush --path=$dir
+
+	# Cleanup DB
+	wp db repair --path=$dir
+	wp db optimize --path=$dir
+
+	# Optional
+	while [[ $# -gt 0 ]]; do
+		case "$1" in
+		--regenerate-thumbnails|-R)
+			# Regenerate all thumbnails
+			wp media regenerate --yes --path=$dir \;
+			shift
+			;;
+		--clear-all-transients|-Ta)
+			# Clear WP transients
+			wp transient delete-all --path=$dir \;
+			shift
+			;;
+		--clear-expirated-transients|-Te)
+			# Clear expired WP transients
+			wp transient delete-expired --path=$dir \;
+			shift
+			;;
+		*)
+			echo "Invalid option: $1"
+			# exit 1
+			;;
+		esac
+		shift
+	done
+
+done < <(find ~/Sites -type d -maxdepth 1)
+
+
+
+
+while read -r dir; do
+
+	if [ ! -f $dir/wp-config.php ]; then
+		continue
+	fi
+
+	echo "Site found: $dir"
+
+	# Maybe update all WP cores
+	wp core update --path=$dir
+	wp core update-db --path=$dir
+
+	# Update all plugins
+	wp plugin update-all --path=$dir
+
+	# Update all themes
+	wp theme update-all --path=$dir
+
+	# Delete spam comments
+	wp comment delete --path=$dir $(wp comment list --status=spam --field=ID --path=$dir)
+
+	# Flush all WP caches
+	wp cache flush --path=$dir
+
+	# Flush all WP rewrites
+	wp rewrite flush --path=$dir
+
+	# Cleanup DB
+	wp db repair --path=$dir
+	wp db optimize --path=$dir
+
+	# Optional
+	while [[ $# -gt 0 ]]; do
+		case "$1" in
+		--regenerate-thumbnails|-R)
+			# Regenerate all thumbnails
+			wp media regenerate --yes --path=$dir \;
+			shift
+			;;
+		--clear-all-transients|-Ta)
+			# Clear WP transients
+			wp transient delete-all --path=$dir \;
+			shift
+			;;
+		--clear-expirated-transients|-Te)
+			# Clear expired WP transients
+			wp transient delete-expired --path=$dir \;
+			shift
+			;;
+		*)
+			echo "Invalid option: $1"
+			# exit 1
+			;;
+		esac
+		shift
+	done
+
+done < <(find ~/Sites -type d -maxdepth 1)
 
 # Update all submodules
 find ~/Documents -type d -name '.git' -exec sh -c 'cd "{}" && cd .. && git submodule foreach git pull origin master' \;
@@ -16,42 +127,3 @@ find ~/Documents -type d -name 'bower_components' -exec sh -c 'cd "{}" && cd .. 
 
 # Update NPM
 find ~/Documents -type d -name 'node_modules' -exec sh -c 'cd "{}" && cd .. && npm update --save-dev' \;
-
-# Delete spam comments
-wp comment delete $(wp comment list --status=spam --field=ID)
-
-# Flush all WP caches
-find ~/Sites -type d -maxdepth 1 -exec wp cache flush --path={} \;
-
-# Flush all WP rewrites
-find ~/Sites -type d -maxdepth 1 -exec wp rewrite flush --path={} \;
-
-# Cleanup DB
-wp db repair
-wp db optimize
-
-# Optional
-while [[ $# -gt 0 ]]; do
-	case "$1" in
-	--regenerate-thumbnails|-R)
-		# Regenerate all thumbnails
-		find ~/Sites -type d -maxdepth 1 -exec wp media regenerate --yes --path={} \;
-		shift
-		;;
-	--clear-all-transients|-Ta)
-		# Clear WP transients
-		find ~/Sites -type d -maxdepth 1 -exec wp transient delete-all --path={} \;
-		shift
-		;;
-	--clear-expirated-transients|-Te)
-		# Clear expired WP transients
-		find ~/Sites -type d -maxdepth 1 -exec wp transient delete-expired --path={} \;
-		shift
-		;;
-	*)
-		echo "Invalid option: $1"
-		# exit 1  ## Could be optional.
-		;;
-	esac
-	shift
-done
