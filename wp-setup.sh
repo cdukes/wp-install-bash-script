@@ -17,42 +17,58 @@ mysql -h localhost -u $DB_USER -p$DB_PW -Bse "CREATE DATABASE $SITENAME; "
 wp core download
 wp core config --dbname=$SITENAME --dbuser=$DB_USER --dbpass=$DB_PW --extra-php <<PHP
 define( 'WP_DEBUG', true );
+define( 'WP_DEBUG_LOG', true );
+define( 'SCRIPT_DEBUG', true );
+define( 'CONCATENATE_SCRIPTS', false );
 
 /**
  * Manually define site location
  */
-define('WP_SITEURL', 'http://$SITENAME.dev');
-define('WP_HOME', 'http://$SITENAME.dev');
+define( 'WP_SITEURL', 'http://$SITENAME.dev' );
+define( 'WP_HOME', 'http://$SITENAME.dev' );
 
 /**
  * Limit post revision history
  */
-define('WP_POST_REVISIONS', 3);
+define( 'WP_POST_REVISIONS', 3 );
 
 /**
  * Skip /wp-content/ when upgrading
  */
-define('CORE_UPGRADE_SKIP_NEW_BUNDLED', true );
+define( 'CORE_UPGRADE_SKIP_NEW_BUNDLED', true );
+define( 'WP_AUTO_UPDATE_CORE', 'minor' );
 
 /**
  * Increase PHP memory limit
  */
-define('WP_MEMORY_LIMIT', '96M');
+define( 'WP_MEMORY_LIMIT', '96M' );
+define( 'WP_MAX_MEMORY_LIMIT', '128M' );
 
 /**
  * Empty trash more frequently
  */
-define('EMPTY_TRASH_DAYS', 15 );
+define( 'EMPTY_TRASH_DAYS', 15 );
 
 /**
  * Enable trash for media items
  */
-define('MEDIA_TRASH', true);
+define( 'MEDIA_TRASH', true );
 
 /**
  * Prevent theme/plugin file editing
  */
-define('DISALLOW_FILE_EDIT', true);
+define( 'DISALLOW_FILE_EDIT', true );
+define( 'DISALLOW_FILE_MODS', true );
+
+/**
+ * Set default theme
+ */
+define( 'WP_DEFAULT_THEME', 'twentytwelve' );
+
+/**
+ * Set post autosave interval
+ */
+define( 'AUTOSAVE_INTERVAL', 60 );
 PHP
 wp core install --url=http://$SITENAME.dev --title=$SITENAME --admin_user=$WP_USER --admin_password=$WP_PW --admin_email=$WP_EMAIL
 
@@ -72,8 +88,9 @@ wp plugin install wordpress-importer
 wp plugin install login-security-solution
 
 # cleanup themes
+wp theme delete twentyfifteen
+wp theme delete twentyfourteen
 wp theme delete twentythirteen
-wp theme delete twentytwelve
 wp theme install "$WP_GENESIS_LOCATION"
 
 # add test XML
