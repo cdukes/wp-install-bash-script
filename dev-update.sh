@@ -20,49 +20,6 @@ while read -r dir; do
 	wp theme update-all --path=$dir
 
 	# Delete spam comments
-	wp comment delete --path=$dir $(wp comment list --status=spam --field=ID --path=$dir)
-
-	# Flush all WP caches
-	wp cache flush --path=$dir
-
-	# Flush all WP rewrites
-	wp rewrite flush --path=$dir
-
-	# Cleanup DB
-	wp db repair --path=$dir
-	wp db optimize --path=$dir
-
-	# Optional
-	while [[ $# -gt 0 ]]; do
-		case "$1" in
-		--regenerate-thumbnails|-R)
-			# Regenerate all thumbnails
-			wp media regenerate --yes --path=$dir \;
-			shift
-			;;
-		--clear-all-transients|-Ta)
-			# Clear WP transients
-			wp transient delete-all --path=$dir \;
-			shift
-			;;
-		--clear-expirated-transients|-Te)
-			# Clear expired WP transients
-			wp transient delete-expired --path=$dir \;
-			shift
-			;;
-		*)
-			echo "Invalid option: $1"
-			# exit 1
-			;;
-		esac
-		shift
-	done
-
-done < <(find ~/Sites -type d -maxdepth 1)
-
-
-
-
 while read -r dir; do
 
 	if [ ! -f $dir/wp-config.php ]; then
