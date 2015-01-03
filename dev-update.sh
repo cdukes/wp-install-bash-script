@@ -54,10 +54,9 @@ while read -r dir; do
 			;;
 		*)
 			echo "Invalid option: $1"
-			# exit 1
+			shift
 			;;
 		esac
-		shift
 	done
 
 done < <(find ~/Sites -type d -maxdepth 1)
