@@ -20,26 +20,9 @@ while read -r dir; do
 	wp theme update-all --path=$dir
 
 	# Delete spam comments
-while read -r dir; do
-
-	if [ ! -f $dir/wp-config.php ]; then
-		continue
+	if [ "$(wp comment list --status=spam --format=count --path=$dir)" -gt 0 ]; then
+		wp comment delete $(wp comment list --status=spam --format=ids --path=$dir) --path=$dir
 	fi
-
-	echo "Site found: $dir"
-
-	# Maybe update all WP cores
-	wp core update --path=$dir
-	wp core update-db --path=$dir
-
-	# Update all plugins
-	wp plugin update-all --path=$dir
-
-	# Update all themes
-	wp theme update-all --path=$dir
-
-	# Delete spam comments
-	wp comment delete --path=$dir $(wp comment list --status=spam --field=ID --path=$dir)
 
 	# Flush all WP caches
 	wp cache flush --path=$dir
