@@ -58,7 +58,7 @@ define( 'MEDIA_TRASH', true );
  * Prevent theme/plugin file editing
  */
 define( 'DISALLOW_FILE_EDIT', true );
-define( 'DISALLOW_FILE_MODS', true );
+// define( 'DISALLOW_FILE_MODS', true );
 
 /**
  * Set default theme
