@@ -83,7 +83,7 @@ wp plugin install query-monitor
 wp plugin install velvet-blues-update-urls
 wp plugin install wordpress-seo
 wp plugin install wp-crontrol
-wp plugin install wp-smushit
+wp plugin install ewww-image-optimizer
 wp plugin install wordpress-importer
 wp plugin install login-security-solution
 
