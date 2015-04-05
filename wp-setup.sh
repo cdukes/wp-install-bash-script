@@ -76,16 +76,18 @@ wp core install --url=http://$SITENAME.dev --title=$SITENAME --admin_user=$WP_US
 wp plugin uninstall akismet
 wp plugin uninstall hello
 wp plugin install "$WP_ACF_LOCATION"
+wp plugin install capability-manager-enhanced
+wp plugin install ewww-image-optimizer
+wp plugin install login-security-solution
+wp plugin install query-monitor
 wp plugin install regenerate-thumbnails
+wp plugin install rewrite-rules-inspector
 wp plugin install theme-check
 wp plugin install underconstruction
-wp plugin install query-monitor
 wp plugin install velvet-blues-update-urls
+wp plugin install wordpress-importer
 wp plugin install wordpress-seo
 wp plugin install wp-crontrol
-wp plugin install ewww-image-optimizer
-wp plugin install wordpress-importer
-wp plugin install login-security-solution
 
 # cleanup themes
 wp theme delete twentyfifteen
