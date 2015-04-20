@@ -17,7 +17,7 @@ mysql -h localhost -u $DB_USER -p$DB_PW -Bse "CREATE DATABASE $SITENAME; "
 wp core download
 wp core config --dbname=$SITENAME --dbuser=$DB_USER --dbpass=$DB_PW --extra-php <<PHP
 define( 'WP_DEBUG', true );
-define( 'WP_DEBUG_LOG', true );
+define( 'WP_DEBUG_LOG', false );
 define( 'SCRIPT_DEBUG', true );
 define( 'CONCATENATE_SCRIPTS', false );
 
