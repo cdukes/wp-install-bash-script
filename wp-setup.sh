@@ -79,6 +79,7 @@ wp plugin install "$WP_ACF_LOCATION"
 wp plugin install capability-manager-enhanced
 wp plugin install ewww-image-optimizer
 wp plugin install login-security-solution
+wp plugin install plugin-vulnerabilities --activate
 wp plugin install query-monitor
 wp plugin install regenerate-thumbnails
 wp plugin install rewrite-rules-inspector
