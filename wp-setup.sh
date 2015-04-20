@@ -52,7 +52,7 @@ define( 'EMPTY_TRASH_DAYS', 15 );
 /**
  * Enable trash for media items
  */
-define( 'MEDIA_TRASH', true );
+// define( 'MEDIA_TRASH', true );
 
 /**
  * Prevent theme/plugin file editing
