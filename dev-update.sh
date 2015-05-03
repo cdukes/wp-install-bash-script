@@ -31,8 +31,13 @@ while read -r dir; do
 	wp rewrite flush --path=$dir
 
 	# Cleanup DB
-	wp db repair --path=$dir
-	wp db optimize --path=$dir
+	# wp db repair --path=$dir
+	# wp db optimize --path=$dir
+
+	# Reset permissions
+	echo "Resetting permissions"
+	find $dir -type d -exec chmod -R 775 {} \;
+	find $dir -type f -exec chmod -R 664 {} \;
 
 	# Optional
 	while [[ $# -gt 0 ]]; do
