@@ -77,6 +77,7 @@ wp plugin uninstall akismet
 wp plugin uninstall hello
 wp plugin install "$WP_ACF_LOCATION"
 wp plugin install capability-manager-enhanced
+wp plugin install disable-emojis --activate
 wp plugin install ewww-image-optimizer
 wp plugin install login-security-solution
 wp plugin install plugin-vulnerabilities --activate
