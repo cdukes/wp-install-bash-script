@@ -63,7 +63,7 @@ define( 'DISALLOW_FILE_EDIT', true );
 /**
  * Set default theme
  */
-define( 'WP_DEFAULT_THEME', 'twentyfifteen' );
+define( 'WP_DEFAULT_THEME', 'genesis' );
 
 /**
  * Set post autosave interval
