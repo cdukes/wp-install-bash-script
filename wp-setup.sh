@@ -133,6 +133,7 @@ wp rewrite structure '/%postname%/' --hard
 # update site options
 wp option update blogdescription ''
 wp option update blog_public '0'
+wp option update default_ping_status 'closed'
 wp option update default_comment_status 'closed'
 wp option update timezone_string "$WP_TIMEZONE"
 
