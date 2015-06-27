@@ -96,6 +96,7 @@ wp plugin install velvet-blues-update-urls
 wp plugin install wordpress-importer
 wp plugin install wordpress-seo
 wp plugin install wp-crontrol
+wp plugin install yoast-comment-hacks
 
 # cleanup themes
 wp theme delete twentyfifteen
