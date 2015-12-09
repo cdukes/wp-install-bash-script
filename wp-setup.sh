@@ -85,12 +85,9 @@ wp plugin install "$WP_ACF_LOCATION"
 wp plugin install capability-manager-enhanced
 wp plugin install disable-emojis --activate
 wp plugin install ewww-image-optimizer
-wp plugin install login-security-solution
-wp plugin install plugin-vulnerabilities --activate
 wp plugin install query-monitor
 wp plugin install regenerate-thumbnails
 wp plugin install rewrite-rules-inspector
-wp plugin install theme-check
 wp plugin install underconstruction
 wp plugin install velvet-blues-update-urls
 wp plugin install wordpress-importer
