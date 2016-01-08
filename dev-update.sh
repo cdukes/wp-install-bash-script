@@ -1,5 +1,4 @@
 set -o nounset
-set -o errexit
 
 while read -r dir; do
 
