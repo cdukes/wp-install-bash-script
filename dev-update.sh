@@ -64,6 +64,8 @@ while read -r dir; do
 			;;
 		esac
 	done
+	# Test cron
+	wp cron test --path=$dir
 
 done < <(find ~/Sites -type d -maxdepth 1)
 
