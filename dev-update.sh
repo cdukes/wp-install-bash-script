@@ -13,10 +13,10 @@ while read -r dir; do
 	wp core update-db --path=$dir
 
 	# Update all plugins
-	wp plugin update-all --path=$dir
+	wp plugin update --all --path=$dir
 
 	# Update all themes
-	wp theme update-all --path=$dir
+	wp theme update --all --path=$dir
 
 	# Delete spam comments
 	if [ "$(wp comment list --status=spam --format=count --path=$dir)" -gt 0 ]; then
