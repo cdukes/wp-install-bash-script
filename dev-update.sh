@@ -40,32 +40,11 @@ while read -r dir; do
 	find $dir -type d -exec chmod -R 775 {} \;
 	find $dir -type f -exec chmod -R 664 {} \;
 
-	# Optional
-	while [[ $# -gt 0 ]]; do
-		case "$1" in
-		--regenerate-thumbnails|-R)
-			# Regenerate all thumbnails
-			wp media regenerate --yes --path=$dir \;
-			shift
-			;;
-		--clear-all-transients|-Ta)
-			# Clear WP transients
-			wp transient delete-all --path=$dir \;
-			shift
-			;;
-		--clear-expirated-transients|-Te)
-			# Clear expired WP transients
-			wp transient delete-expired --path=$dir \;
-			shift
-			;;
-		*)
-			echo "Invalid option: $1"
-			shift
-			;;
-		esac
-	done
 	# Test cron
 	wp cron test --path=$dir
+
+	# Fill in missing media items
+	wp media regenerate --only-missing --yes --quiet --path=$dir
 
 done < <(find ~/Sites -type d -maxdepth 1)
 
