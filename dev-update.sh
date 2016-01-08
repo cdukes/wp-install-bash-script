@@ -23,8 +23,10 @@ while read -r dir; do
 		wp comment delete $(wp comment list --status=spam --format=ids --path=$dir) --path=$dir
 	fi
 
-	# Flush all WP caches
+	# Flush all WP caches + transients
 	wp cache flush --path=$dir
+	# wp transient delete-all --path=$dir
+	wp transient delete-expired --path=$dir
 
 	# Flush all WP rewrites
 	wp rewrite flush --path=$dir
