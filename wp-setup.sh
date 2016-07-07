@@ -138,6 +138,9 @@ wp option update default_ping_status 'closed'
 wp option update default_comment_status 'closed'
 wp option update timezone_string "$WP_TIMEZONE"
 
+# set media view for user #1
+wp user meta set 1 wp_media_library_mode 'list'
+
 # bones theme
 while [[ $# -gt 0 ]]; do
 	case "$1" in
