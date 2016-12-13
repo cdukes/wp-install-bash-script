@@ -142,6 +142,9 @@ wp option update timezone_string "$WP_TIMEZONE"
 # set media view for user #1
 wp user meta set 1 wp_media_library_mode 'list'
 
+# verify
+wp core verify-checksums
+
 # bones theme
 while [[ $# -gt 0 ]]; do
 	case "$1" in
