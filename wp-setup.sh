@@ -127,6 +127,7 @@ done
 wp db repair
 wp db optimize
 wp cache flush
+wp transient delete --all
 
 # flush permalinks
 wp rewrite structure '/%postname%/' --hard
