@@ -76,7 +76,7 @@ define( 'WP_DEFAULT_THEME', 'genesis' );
  */
 define( 'AUTOSAVE_INTERVAL', 60 );
 PHP
-wp core install --url=http://$SITENAME.dev --title=$SITENAME --admin_user=$WP_USER --admin_password=$WP_PW --admin_email=$WP_EMAIL
+wp core install --url=http://$SITENAME.dev --title=$SITENAME --admin_user=$WP_USER --admin_password=$WP_PW --admin_email=$WP_EMAIL --skip-email
 
 # install plugins
 wp plugin uninstall akismet
