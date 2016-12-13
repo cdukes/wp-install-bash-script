@@ -99,9 +99,9 @@ wp plugin install wp-crontrol
 wp plugin install yoast-comment-hacks
 
 # cleanup themes
+# wp theme delete twentyseventeen
+wp theme delete twentysixteen
 wp theme delete twentyfifteen
-wp theme delete twentyfourteen
-wp theme delete twentythirteen
 
 # empty site content
 wp site empty --yes
