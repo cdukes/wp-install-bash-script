@@ -88,6 +88,7 @@ wp plugin install disable-embeds --activate
 wp plugin install disable-emojis --activate
 wp plugin install ewww-image-optimizer
 wp plugin install imsanity --activate
+wp plugin install limit-login-attempts-reloaded --activate
 wp plugin install query-monitor
 wp plugin install regenerate-thumbnails
 wp plugin install rewrite-rules-inspector
