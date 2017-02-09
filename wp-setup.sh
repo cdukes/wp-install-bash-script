@@ -124,8 +124,6 @@ while [[ $# -gt 0 ]]; do
 done
 
 # clean db
-wp db repair
-wp db optimize
 wp cache flush
 wp transient delete --all
 
