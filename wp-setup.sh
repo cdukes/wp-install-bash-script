@@ -7,8 +7,8 @@ SITENAME=$1
 
 # create and enter folder
 cd ~/Sites
-mkdir $SITENAME
-cd $SITENAME
+mkdir $SITENAME.t
+cd $SITENAME.t
 
 # create DB
 mysql -h localhost -u $DB_USER -p$DB_PW -Bse "CREATE DATABASE $SITENAME; "
@@ -30,8 +30,8 @@ define( 'CONCATENATE_SCRIPTS', false );
 /**
  * Manually define site location
  */
-define( 'WP_SITEURL', 'http://$SITENAME.dev' );
-define( 'WP_HOME', 'http://$SITENAME.dev' );
+define( 'WP_SITEURL', 'https://$SITENAME.t.dev' );
+define( 'WP_HOME', 'https://$SITENAME.t.dev' );
 
 /**
  * Limit post revision history
@@ -76,7 +76,7 @@ define( 'WP_DEFAULT_THEME', 'genesis' );
  */
 define( 'AUTOSAVE_INTERVAL', 60 );
 PHP
-wp core install --url=http://$SITENAME.dev --title=$SITENAME --admin_user=$WP_USER --admin_password=$WP_PW --admin_email=$WP_EMAIL --skip-email
+wp core install --url=https://$SITENAME.t.dev --title=$SITENAME --admin_user=$WP_USER --admin_password=$WP_PW --admin_email=$WP_EMAIL --skip-email
 
 # install plugins
 wp plugin uninstall akismet
