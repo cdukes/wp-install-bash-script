@@ -128,7 +128,7 @@ wp cache flush
 wp transient delete --all
 
 # flush permalinks
-wp rewrite structure '/%postname%/' --hard
+# wp rewrite structure '/%postname%/' --hard
 
 # update site options
 wp option update blogdescription ''
