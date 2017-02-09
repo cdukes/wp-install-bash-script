@@ -44,7 +44,7 @@ while read -r dir; do
 	wp cron test --path=$dir
 
 	# Fill in missing media items
-	wp media regenerate --only-missing --yes --quiet --path=$dir
+	# wp media regenerate --only-missing --yes --quiet --path=$dir
 
 done < <(find ~/Sites -type d -maxdepth 1)
 
