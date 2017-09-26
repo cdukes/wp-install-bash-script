@@ -81,12 +81,14 @@ wp core install --url=https://$SITENAME.t.dev --title=$SITENAME --admin_user=$WP
 # install plugins
 wp plugin uninstall akismet
 wp plugin uninstall hello
-wp plugin install "$WP_ACF_LOCATION"
+wp plugin install "$WP_ACF_LOCATION" --activate
 wp plugin install capability-manager-enhanced
 wp plugin install customizer-remove-all-parts --activate
 wp plugin install disable-embeds --activate
 wp plugin install disable-emojis --activate
+wp plugin install disable-json-api --activate
 wp plugin install ewww-image-optimizer
+wp plugin install image-processing-queue --activate
 wp plugin install imsanity --activate
 wp plugin install limit-login-attempts-reloaded --activate
 wp plugin install query-monitor
@@ -95,7 +97,7 @@ wp plugin install rewrite-rules-inspector
 wp plugin install underconstruction
 wp plugin install velvet-blues-update-urls
 wp plugin install wordpress-importer
-wp plugin install wordpress-seo
+wp plugin install wordpress-seo --activate
 wp plugin install wp-crontrol
 wp plugin install yoast-comment-hacks
 
@@ -136,6 +138,7 @@ wp option update blogdescription ''
 wp option update blog_public '0'
 wp option update default_ping_status 'closed'
 wp option update default_comment_status 'closed'
+wp option update image_default_link_type 'none'
 wp option update timezone_string "$WP_TIMEZONE"
 
 # set media view for user #1
