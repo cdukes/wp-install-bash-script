@@ -101,6 +101,12 @@ wp plugin install wordpress-seo --activate
 wp plugin install wp-crontrol
 wp plugin install yoast-comment-hacks
 
+# MU plugins
+wp plugin install password-bcrypt
+wp eval 'mkdir(WP_CONTENT_DIR . "/mu-plugins/");'
+wp eval 'rename(WP_CONTENT_DIR . "/plugins/password-bcrypt/wp-password-bcrypt.php", WP_CONTENT_DIR . "/mu-plugins/wp-password-bcrypt.php");'
+wp plugin uninstall password-bcrypt
+
 # cleanup themes
 # wp theme delete twentyseventeen
 wp theme delete twentysixteen
