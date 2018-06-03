@@ -99,7 +99,6 @@ wp plugin install velvet-blues-update-urls
 wp plugin install wordpress-importer
 wp plugin install wordpress-seo --activate
 wp plugin install wp-crontrol
-wp plugin install yoast-comment-hacks
 
 # MU plugins
 wp plugin install password-bcrypt
