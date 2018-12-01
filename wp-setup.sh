@@ -88,6 +88,8 @@ wp plugin install disable-embeds --activate
 wp plugin install disable-emojis --activate
 wp plugin install disable-json-api --activate
 wp plugin install ewww-image-optimizer
+wp plugin install gutenberg --activate
+wp plugin install forbid-pwned-passwords --activate
 wp plugin install image-processing-queue --activate
 wp plugin install imsanity --activate
 wp plugin install limit-login-attempts-reloaded --activate
@@ -99,12 +101,13 @@ wp plugin install velvet-blues-update-urls
 wp plugin install wordpress-importer
 wp plugin install wordpress-seo --activate
 wp plugin install wp-crontrol
+wp plugin install wp-migrate-db-anonymization
 
 # MU plugins
 wp plugin install password-bcrypt
 wp eval 'mkdir(WP_CONTENT_DIR . "/mu-plugins/");'
 wp eval 'rename(WP_CONTENT_DIR . "/plugins/password-bcrypt/wp-password-bcrypt.php", WP_CONTENT_DIR . "/mu-plugins/wp-password-bcrypt.php");'
-wp plugin uninstall password-bcrypt
+rm -rf wp-content/plugins/password-bcrypt
 
 # cleanup themes
 # wp theme delete twentyseventeen
