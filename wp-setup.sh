@@ -110,7 +110,7 @@ wp eval 'rename(WP_CONTENT_DIR . "/plugins/password-bcrypt/wp-password-bcrypt.ph
 rm -rf wp-content/plugins/password-bcrypt
 
 # cleanup themes
-# wp theme delete twentyseventeen
+wp theme delete twentyseventeen
 wp theme delete twentysixteen
 wp theme delete twentyfifteen
 
