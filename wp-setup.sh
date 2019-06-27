@@ -95,6 +95,7 @@ wp plugin install image-processing-queue --activate
 wp plugin install imsanity --activate
 wp plugin install limit-login-attempts-reloaded --activate
 wp plugin install query-monitor
+wp plugin install redirection
 wp plugin install regenerate-thumbnails
 wp plugin install rewrite-rules-inspector
 wp plugin install underconstruction
