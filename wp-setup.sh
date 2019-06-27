@@ -84,7 +84,6 @@ wp plugin uninstall hello
 wp plugin install "$WP_ACF_LOCATION" --activate
 wp plugin install capability-manager-enhanced
 wp plugin install classic-editor
-wp plugin install customizer-remove-all-parts --activate
 wp plugin install disable-embeds --activate
 wp plugin install disable-emojis --activate
 wp plugin install disable-json-api --activate
