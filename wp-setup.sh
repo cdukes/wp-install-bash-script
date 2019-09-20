@@ -102,7 +102,6 @@ wp plugin install velvet-blues-update-urls
 wp plugin install wordpress-importer
 wp plugin install wordpress-seo --activate
 wp plugin install wp-crontrol
-wp plugin install wp-migrate-db-anonymization
 
 # MU plugins
 wp plugin install password-bcrypt
