@@ -87,7 +87,6 @@ wp plugin install classic-editor
 wp plugin install disable-blog
 wp plugin install disable-embeds --activate
 wp plugin install disable-emojis --activate
-wp plugin install disable-genesis-schema --activate
 wp plugin install disable-json-api --activate
 wp plugin install ewww-image-optimizer
 wp plugin install forbid-pwned-passwords --activate
