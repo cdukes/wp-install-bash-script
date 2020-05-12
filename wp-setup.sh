@@ -77,6 +77,11 @@ define( 'DISALLOW_FILE_EDIT', true );
 define( 'WP_DEFAULT_THEME', 'genesis' );
 
 /**
+ * Disable 5.2 error emails
+ */
+define( 'WP_DISABLE_FATAL_ERROR_HANDLER', true );
+
+/**
  * Set post autosave interval
  */
 define( 'AUTOSAVE_INTERVAL', 60 );
