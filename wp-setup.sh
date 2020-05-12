@@ -23,6 +23,11 @@ if( !(defined( 'DOING_AJAX' ) && DOING_AJAX) ) {
 }
 
 /**
+ * Save all DB Queries
+ */
+// define( 'SAVEQUERIES', true );
+
+/**
  * Don't combine admin scripts
  */
 define( 'CONCATENATE_SCRIPTS', false );
