@@ -93,6 +93,7 @@ wp plugin install forbid-pwned-passwords --activate
 wp plugin install image-processing-queue --activate
 wp plugin install imsanity --activate
 wp plugin install limit-login-attempts-reloaded --activate
+wp plugin install png-to-jpg --activate
 wp plugin install query-monitor
 wp plugin install redirection
 wp plugin install regenerate-thumbnails
