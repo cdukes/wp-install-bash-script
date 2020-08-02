@@ -82,6 +82,11 @@ define( 'WP_DEFAULT_THEME', 'genesis' );
 define( 'WP_DISABLE_FATAL_ERROR_HANDLER', true );
 
 /**
+ * Set 5.5 environment
+ */
+define( 'WP_ENVIRONMENT_TYPE', 'development' );
+
+/**
  * Set post autosave interval
  */
 define( 'AUTOSAVE_INTERVAL', 60 );
