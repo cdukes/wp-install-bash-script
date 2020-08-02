@@ -100,6 +100,7 @@ wp plugin install "$WP_ACF_LOCATION" --activate
 wp plugin install capability-manager-enhanced
 wp plugin install block-options
 wp plugin install classic-editor
+wp plugin install co-authors-plus
 wp plugin install disable-blog
 wp plugin install disable-comments --activate
 wp plugin install disable-embeds --activate
