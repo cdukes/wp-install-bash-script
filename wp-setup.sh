@@ -97,8 +97,6 @@ wp core install --url=https://$SITENAME.t.test --title=$SITENAME --admin_user=$W
 wp plugin uninstall akismet
 wp plugin uninstall hello
 wp plugin install "$WP_ACF_LOCATION" --activate
-wp plugin install capability-manager-enhanced
-wp plugin install block-options
 wp plugin install classic-editor
 wp plugin install co-authors-plus
 wp plugin install disable-blog
@@ -107,23 +105,17 @@ wp plugin install disable-embeds --activate
 wp plugin install disable-emojis --activate
 wp plugin install disable-json-api --activate
 wp plugin install duplicate-post --activate
-wp plugin install email-templates
 wp plugin install enable-media-replace
 wp plugin install ewww-image-optimizer
 wp plugin install forbid-pwned-passwords --activate
 wp plugin install image-processing-queue --activate
 wp plugin install imsanity --activate
 wp plugin install limit-login-attempts-reloaded --activate
-wp plugin install png-to-jpg --activate
 wp plugin install query-monitor
 wp plugin install redirection
 wp plugin install regenerate-thumbnails
-wp plugin install rewrite-rules-inspector
-wp plugin install underconstruction
 wp plugin install velvet-blues-update-urls
-wp plugin install wordpress-importer
 wp plugin install wordpress-seo --activate
-wp plugin install wp-crontrol
 
 # MU plugins
 wp plugin install password-bcrypt
