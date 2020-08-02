@@ -106,6 +106,7 @@ wp plugin install disable-comments --activate
 wp plugin install disable-embeds --activate
 wp plugin install disable-emojis --activate
 wp plugin install disable-json-api --activate
+wp plugin install duplicate-post --activate
 wp plugin install email-templates
 wp plugin install ewww-image-optimizer
 wp plugin install forbid-pwned-passwords --activate
