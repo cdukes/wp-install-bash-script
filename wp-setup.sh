@@ -11,7 +11,7 @@ mkdir $SITENAME.t
 cd $SITENAME.t
 
 # create DB
-mysql -h localhost -u $DB_USER -p$DB_PW -Bse "CREATE DATABASE $SITENAME; "
+mysql -h localhost -u $DB_USER -Bse "CREATE DATABASE $SITENAME; "
 
 # download and install WP
 wp core download
@@ -84,7 +84,9 @@ define( 'WP_DISABLE_FATAL_ERROR_HANDLER', true );
 /**
  * Set 5.5 environment
  */
-define( 'WP_ENVIRONMENT_TYPE', 'development' );
+define( 'WP_ENVIRONMENT_TYPE', 'local' );
+
+define( 'ALLOW_UNFILTERED_UPLOADS', true );
 
 /**
  * Set post autosave interval
@@ -98,7 +100,7 @@ wp plugin uninstall akismet
 wp plugin uninstall hello
 wp plugin install "$WP_ACF_LOCATION" --activate
 wp plugin install classic-editor
-wp plugin install co-authors-plus
+# wp plugin install co-authors-plus
 wp plugin install disable-blog
 wp plugin install disable-comments --activate
 wp plugin install disable-embeds --activate
@@ -111,7 +113,7 @@ wp plugin install forbid-pwned-passwords --activate
 wp plugin install image-processing-queue --activate
 wp plugin install imsanity --activate
 wp plugin install limit-login-attempts-reloaded --activate
-wp plugin install query-monitor
+# wp plugin install query-monitor
 wp plugin install redirection
 wp plugin install regenerate-thumbnails
 wp plugin install velvet-blues-update-urls
@@ -124,6 +126,7 @@ wp eval 'rename(WP_CONTENT_DIR . "/plugins/password-bcrypt/wp-password-bcrypt.ph
 rm -rf wp-content/plugins/password-bcrypt
 
 # cleanup themes
+wp theme delete twentytwenty
 wp theme delete twentynineteen
 wp theme delete twentyseventeen
 wp theme delete twentysixteen
@@ -154,7 +157,7 @@ wp cache flush
 wp transient delete --all
 
 # flush permalinks
-# wp rewrite structure '/%postname%/' --hard
+wp rewrite structure '/%postname%/' --hard
 
 # update site options
 wp option update blogdescription ''
@@ -169,24 +172,3 @@ wp user meta set 1 wp_media_library_mode 'list'
 
 # verify
 wp core verify-checksums
-
-# bones theme
-while [[ $# -gt 0 ]]; do
-	case "$1" in
-	--install-bones|-B)
-		cd wp-content/themes
-		git clone https://github.com/cdukes/bones-for-genesis-2-0.git genesis-$SITENAME
-		cd genesis-$SITENAME
-		npm update --save-dev
-		bower update --save
-		wp theme install "$WP_GENESIS_LOCATION"
-		wp theme activate genesis-$SITENAME
-		shift
-		;;
-	*)
-		echo "Invalid option: $1"
-		# exit 1
-		;;
-	esac
-	shift
-done
