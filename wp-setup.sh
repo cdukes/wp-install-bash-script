@@ -99,6 +99,7 @@ wp core install --url=https://$SITENAME.t.test --title=$SITENAME --admin_user=$W
 wp plugin uninstall akismet
 wp plugin uninstall hello
 wp plugin install "$WP_ACF_LOCATION" --activate
+wp plugin install better-search-replace
 wp plugin install classic-editor
 # wp plugin install co-authors-plus
 wp plugin install disable-blog
@@ -116,7 +117,6 @@ wp plugin install limit-login-attempts-reloaded --activate
 # wp plugin install query-monitor
 wp plugin install redirection
 wp plugin install regenerate-thumbnails
-wp plugin install velvet-blues-update-urls
 wp plugin install wordpress-seo --activate
 
 # MU plugins
