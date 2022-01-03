@@ -41,7 +41,7 @@ define( 'WP_HOME', 'https://$SITENAME.t.test' );
 /**
  * Limit post revision history
  */
-define( 'WP_POST_REVISIONS', 3 );
+define( 'WP_POST_REVISIONS', false );
 
 /**
  * Skip /wp-content/ when upgrading
