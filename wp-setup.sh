@@ -15,85 +15,28 @@ mysql -h localhost -u $DB_USER -Bse "CREATE DATABASE $SITENAME; "
 
 # download and install WP
 wp core download
-wp core config --dbname=$SITENAME --dbuser=$DB_USER --dbpass=$DB_PW --extra-php <<PHP
-if( !(defined( 'DOING_AJAX' ) && DOING_AJAX) ) {
-	define( 'WP_DEBUG', true );
-	define( 'WP_DEBUG_LOG', false );
-	define( 'SCRIPT_DEBUG', true );
-}
-
-/**
- * Save all DB Queries
- */
-// define( 'SAVEQUERIES', true );
-
-/**
- * Don't combine admin scripts
- */
-define( 'CONCATENATE_SCRIPTS', false );
-
-/**
- * Manually define site location
- */
-define( 'WP_SITEURL', 'https://$SITENAME.t.test' );
-define( 'WP_HOME', 'https://$SITENAME.t.test' );
-
-/**
- * Limit post revision history
- */
-define( 'WP_POST_REVISIONS', false );
-
-/**
- * Skip /wp-content/ when upgrading
- */
-define( 'CORE_UPGRADE_SKIP_NEW_BUNDLED', true );
-define( 'WP_AUTO_UPDATE_CORE', 'minor' );
-
-/**
- * Increase PHP memory limit
- */
-define( 'WP_MEMORY_LIMIT', '96M' );
-define( 'WP_MAX_MEMORY_LIMIT', '128M' );
-
-/**
- * Empty trash more frequently
- */
-define( 'EMPTY_TRASH_DAYS', 15 );
-
-/**
- * Enable trash for media items
- */
-// define( 'MEDIA_TRASH', true );
-
-/**
- * Prevent theme/plugin file editing
- */
-define( 'DISALLOW_FILE_EDIT', true );
-// define( 'DISALLOW_FILE_MODS', true );
-
-/**
- * Set default theme
- */
-define( 'WP_DEFAULT_THEME', 'genesis' );
-
-/**
- * Disable 5.2 error emails
- */
-define( 'WP_DISABLE_FATAL_ERROR_HANDLER', true );
-
-/**
- * Set 5.5 environment
- */
-define( 'WP_ENVIRONMENT_TYPE', 'local' );
-
-define( 'ALLOW_UNFILTERED_UPLOADS', true );
-
-/**
- * Set post autosave interval
- */
-define( 'AUTOSAVE_INTERVAL', 60 );
-PHP
+wp core config --dbname=$SITENAME --dbuser=$DB_USER --dbpass=$DB_PW
 wp core install --url=https://$SITENAME.t.test --title=$SITENAME --admin_user=$WP_USER --admin_password=$WP_PW --admin_email=$WP_EMAIL --skip-email
+
+# configure WP
+wp config set WP_SITEURL https://$SITENAME.t.test
+wp config set WP_HOME https://$SITENAME.t.test
+wp config set WP_POST_REVISIONS false --raw
+wp config set WP_DISABLE_FATAL_ERROR_HANDLER true --raw
+wp config set WP_DEBUG true --raw
+wp config set WP_DEBUG_LOG false --raw
+wp config set WP_DEBUG_DISPLAY true --raw
+wp config set WP_ENVIRONMENT_TYPE local
+# wp config set SCRIPT_DEBUG true --raw
+# wp config set CONCATENATE_SCRIPTS false --raw
+wp config set WP_MEMORY_LIMIT 256M
+wp config set WP_MAX_MEMORY_LIMIT 256M
+wp config set CORE_UPGRADE_SKIP_NEW_BUNDLED true --raw
+wp config set WP_AUTO_UPDATE_CORE minor
+wp config set DISALLOW_FILE_EDIT true --raw
+wp config set FORCE_SSL_ADMIN true --raw
+wp config set WP_DEFAULT_THEME genesis
+wp config set ALLOW_UNFILTERED_UPLOADS true --raw
 
 # install plugins
 wp plugin uninstall akismet
