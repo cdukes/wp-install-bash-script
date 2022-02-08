@@ -70,6 +70,7 @@ rm -rf wp-content/plugins/password-bcrypt
 
 # cleanup themes
 wp theme install "$WP_GENESIS_LOCATION" --activate
+wp theme delete twentytwentytwo
 wp theme delete twentytwentyone
 wp theme delete twentytwenty
 wp theme delete twentynineteen
