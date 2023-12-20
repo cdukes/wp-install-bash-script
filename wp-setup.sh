@@ -27,6 +27,7 @@ wp config set WP_DEBUG true --raw
 wp config set WP_DEBUG_LOG false --raw
 wp config set WP_DEBUG_DISPLAY true --raw
 wp config set WP_ENVIRONMENT_TYPE local
+wp config set WP_DEVELOPMENT_MODE theme
 # wp config set SCRIPT_DEBUG true --raw
 # wp config set CONCATENATE_SCRIPTS false --raw
 wp config set WP_MEMORY_LIMIT 256M
@@ -70,13 +71,9 @@ rm -rf wp-content/plugins/password-bcrypt
 
 # cleanup themes
 wp theme install "$WP_GENESIS_LOCATION" --activate
+wp theme delete twentytwentyfour
+wp theme delete twentytwentythree
 wp theme delete twentytwentytwo
-wp theme delete twentytwentyone
-wp theme delete twentytwenty
-wp theme delete twentynineteen
-wp theme delete twentyseventeen
-wp theme delete twentysixteen
-wp theme delete twentyfifteen
 
 # empty site content
 wp site empty --yes
