@@ -104,6 +104,12 @@ wp option update default_ping_status 'closed'
 wp option update default_comment_status 'closed'
 wp option update image_default_link_type 'none'
 wp option update timezone_string "$WP_TIMEZONE"
+wp option update medium_size_w '0'
+wp option update medium_size_h '0'
+wp option update medium_large_size_w '0'
+wp option update medium_large_size_h '0'
+wp option update large_size_w '0'
+wp option update large_size_h '0'
 
 # set media view for user #1
 wp user meta set 1 wp_media_library_mode 'list'
