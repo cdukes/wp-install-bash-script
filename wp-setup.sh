@@ -43,24 +43,19 @@ wp config set ALLOW_UNFILTERED_UPLOADS true --raw
 wp plugin uninstall akismet
 wp plugin uninstall hello
 wp plugin install "$WP_ACF_LOCATION" --activate
-wp plugin install better-search-replace
-wp plugin install classic-editor
-# wp plugin install co-authors-plus
+wp plugin install classic-editor --activate
 wp plugin install disable-blog
 wp plugin install disable-comments --activate
-wp plugin install disable-embeds --activate
-wp plugin install disable-emojis --activate
-wp plugin install disable-json-api --activate
-wp plugin install duplicate-post --activate
-wp plugin install enable-media-replace
-wp plugin install ewww-image-optimizer
-wp plugin install forbid-pwned-passwords --activate
-wp plugin install image-processing-queue --activate
-wp plugin install imsanity --activate
-wp plugin install limit-login-attempts-reloaded --activate
-# wp plugin install query-monitor
+# wp plugin install duplicate-post
+# wp plugin install enable-media-replace
+# wp plugin install forbid-pwned-passwords
+# wp plugin install imsanity
+# wp plugin install png-to-jpg
+wp plugin install wps-limit-login --activate
+wp option update wps_limit_login_show_credit_link ''
 wp plugin install redirection
-wp plugin install regenerate-thumbnails
+# wp plugin install regenerate-thumbnails
+# wp plugin install webp-express
 wp plugin install wordpress-seo --activate
 
 # MU plugins
