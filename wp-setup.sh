@@ -46,6 +46,7 @@ wp plugin install "$WP_ACF_LOCATION" --activate
 wp plugin install classic-editor --activate
 wp plugin install disable-blog
 wp plugin install disable-comments --activate
+wp option patch update disable_comments_options remove_everywhere '1'
 # wp plugin install duplicate-post
 # wp plugin install enable-media-replace
 # wp plugin install forbid-pwned-passwords
@@ -57,6 +58,45 @@ wp plugin install redirection
 # wp plugin install regenerate-thumbnails
 # wp plugin install webp-express
 wp plugin install wordpress-seo --activate
+wp option patch update wpseo content_analysis_active '0'
+wp option patch update wpseo deny_adsbot_crawling '1'
+wp option patch update wpseo deny_ccbot_crawling '1'
+wp option patch update wpseo deny_google_extended_crawling '1'
+wp option patch update wpseo deny_gptbot_crawling '1'
+wp option patch update wpseo deny_wp_json_crawling '1'
+wp option patch update wpseo dismiss_configuration_workout_notice '1'
+wp option patch update wpseo enable_admin_bar_menu '0'
+wp option patch update wpseo enable_ai_generator '0'
+wp option patch update wpseo enable_enhanced_slack_sharing '0'
+wp option patch update wpseo enable_headless_rest_endpoints '0'
+wp option patch update wpseo enable_metabox_insights '0'
+wp option patch update wpseo enable_text_link_counter '0'
+wp option patch update wpseo keyword_analysis_active '0'
+wp option patch update wpseo remove_atom_rdf_feeds '1'
+wp option patch update wpseo remove_emoji_scripts '1'
+wp option patch update wpseo remove_feed_authors '1'
+wp option patch update wpseo remove_feed_custom_taxonomies '1'
+wp option patch update wpseo remove_feed_global_comments '1'
+wp option patch update wpseo remove_feed_post_comments '1'
+wp option patch update wpseo remove_feed_post_types '1'
+wp option patch update wpseo remove_feed_search '1'
+wp option patch update wpseo remove_feed_tags '1'
+wp option patch update wpseo remove_generator '1'
+wp option patch update wpseo remove_oembed_links '1'
+wp option patch update wpseo remove_pingback_header '1'
+wp option patch update wpseo remove_powered_by_header '1'
+wp option patch update wpseo remove_rest_api_links '1'
+wp option patch update wpseo remove_rsd_wlw_links '1'
+wp option patch update wpseo remove_shortlinks '1'
+wp option patch update wpseo search_cleanup '1'
+wp option patch update wpseo search_cleanup_emoji '1'
+wp option patch update wpseo search_cleanup_patterns '1'
+wp option patch update wpseo semrush_integration_active '0'
+wp option patch update wpseo show_onboarding_notice '0'
+wp option patch update wpseo wincher_integration_active '0'
+wp option patch update wpseo_titles disable-author '1'
+wp option patch update wpseo_titles disable-date '1'
+wp option patch update wpseo_titles disable-post_format '1'
 
 # MU plugins
 wp plugin install password-bcrypt
