@@ -15,7 +15,7 @@ mysql -h localhost -u $DB_USER -Bse "CREATE DATABASE $SITENAME; "
 
 # download and install WP
 wp core download
-wp core config --dbname=$SITENAME --dbuser=$DB_USER --dbpass=$DB_PW
+wp core config --dbname=$SITENAME --dbuser=$DB_USER --dbpass=$DB_PW --dbhost=$DB_HOST --skip-check
 wp core install --url=https://$SITENAME.t.test --title=$SITENAME --admin_user=$WP_USER --admin_password=$WP_PW --admin_email=$WP_EMAIL --skip-email
 
 # configure WP

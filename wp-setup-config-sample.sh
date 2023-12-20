@@ -1,5 +1,6 @@
 DB_USER=''
 DB_PW=''
+DB_HOST=''
 
 # initial admin username
 WP_USER=''
